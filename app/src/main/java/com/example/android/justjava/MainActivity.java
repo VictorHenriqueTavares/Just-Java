@@ -23,48 +23,45 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-       // display(quantity);
-        //displayPrice(quantity * 5);
-        String priceMessage = "Total R$ "+quantity*5+" \nThank You";
-        displayMessage(priceMessage);
+        displayMessage(createOrderSubmit());
     }
 
 
     public void increment(View view) {
-        quantity ++;
-        display(quantity);
-        displayPrice(quantity * 5);
+        quantity++;
+        displayQuantity(quantity);
     }
 
     public void decrement(View view) {
-        quantity --;
-        display(quantity);
-        displayPrice(quantity * 5);
+        quantity--;
+        displayQuantity(quantity);
     }
 
 
+    private int calculatePrice() {
+        return quantity * 5;
+    }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
+    private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
-    }
-
-    /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
 
     /**
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
+    }
+
+    private String createOrderSubmit() {
+        return "Kapitan Kunal\n" +
+                "Quantity: " + quantity + "\n" +
+                "Total: R$" + calculatePrice() + "\n" +
+                "Thank you!";
     }
 }

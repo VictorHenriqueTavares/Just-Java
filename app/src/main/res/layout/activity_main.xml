@@ -42,10 +42,11 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/order_summary_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Price"
+        android:text="Order sumary"
         android:textAllCaps="true" />
 
     <TextView
